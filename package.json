@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "commander": "^2.11.0"
   }
 }
