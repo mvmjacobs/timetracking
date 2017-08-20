@@ -23,8 +23,9 @@
     "timetracking": "./bin/timetracking"
   },
   "scripts": {
-    "build": "tsc && npm pack && move ./*.tgz ./builds",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "tsc && npm pack && move ./*.tgz ./builds/" // Create the folder "builds" if it doesn't exists
   },
   "devDependencies": {
     "typescript": "^2.4.2"
