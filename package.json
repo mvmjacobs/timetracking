@@ -23,7 +23,7 @@
     "timetracking": "./bin/timetracking"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm pack && move ./*.tgz ./builds",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
