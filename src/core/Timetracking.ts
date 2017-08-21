@@ -17,6 +17,10 @@ export default class Timetracking {
 		return new Task(key, task);
 	}
 
+	getTaskByStatus(status: string): Task[] {
+		return this.tasks && this.tasks.length ? this.tasks.filter(t => t.status === status) : [];
+	}
+
 	start(taskName: string, description: string) {
 		// TODO: Implement method to start a task
 		console.log('Start is working!');
