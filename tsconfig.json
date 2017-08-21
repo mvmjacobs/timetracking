@@ -6,7 +6,13 @@
 		"removeComments": true,
 		"declaration": true,
 		"outDir": "./lib",
-		"strict": true
+		"strict": true,
+		"lib": [
+			"es6"
+		],
+		"types": [
+			"node"
+		]
 	},
 	"include": [
 		"src/**/*"
