@@ -1,15 +1,12 @@
 {
 	"compilerOptions": {
-		"target": "es6",
+		"target": "es5",
 		"module": "commonjs",
 		"noImplicitAny": false,
 		"removeComments": true,
 		"declaration": true,
 		"outDir": "./lib",
 		"strict": true,
-		"lib": [
-			"es6"
-		],
 		"types": [
 			"node"
 		]
