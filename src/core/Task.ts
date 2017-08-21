@@ -12,4 +12,8 @@ export default class Task {
 		this.timings = values ? values.timings : [];
 		this.log = values ? values.log : [];
 	}
+
+	setStatus(status: string) {
+		this.status = status;
+	}
 }
