@@ -2,14 +2,14 @@ import * as Configstore from 'configstore';
 import Task from './Task';
 
 export default class Timetracking {
-	private config: Configstore;
-	private tasks: any[];
-	private timetrackingConfig: any;
+	configStore: Configstore;
+	tasks: any[];
+	config: any;
 
-	constructor(config) {
-		this.config = config;
-		this.tasks = (config.all.tasks) ? config.all.tasks : [];
-		this.timetrackingConfig = (config.all.config) ? config.all.config : {};
+	constructor(configStore) {
+		this.configStore = configStore;
+		this.tasks = (configStore.all.tasks) ? configStore.all.tasks : [];
+		this.config = (configStore.all.config) ? configStore.all.config : {};
 	}
 
 	getTask(key: string): Task {
