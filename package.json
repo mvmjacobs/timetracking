@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@types/node": "^8.0.24",
-    "commander": "^2.11.0"
+    "commander": "^2.11.0",
+    "configstore": "^3.1.1"
   }
 }
