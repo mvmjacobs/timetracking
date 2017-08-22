@@ -5,4 +5,9 @@ export default class Task {
     timings: any;
     log: any[];
     constructor(name: string, values: any);
+    setStatus(status: string): void;
+    setDescription(description: string): void;
+    addLog(operation: string): void;
+    start(description: string): boolean;
+    pause(): boolean;
 }
