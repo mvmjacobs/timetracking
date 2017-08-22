@@ -29,12 +29,14 @@
     "install-build-dev": "npm run build-dev && npm install ./builds/timetracking-0.0.0-beta.0.tgz -g"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.74",
     "typescript": "^2.4.2"
   },
   "dependencies": {
     "@types/node": "^8.0.24",
     "commander": "^2.11.0",
     "configstore": "^3.1.1",
+    "lodash": "^4.17.4",
     "moment": "^2.18.1"
   }
 }
