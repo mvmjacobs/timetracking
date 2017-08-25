@@ -25,8 +25,8 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-dev": "tsc && npm pack && move ./*.tgz ./builds/",
-    "install-build-dev": "npm run build-dev && npm install ./builds/timetracking-0.0.0-beta.0.tgz -g"
+    "build-dev": "tsc && npm pack && move ./*.tgz ./build/",
+    "install-build-dev": "npm run build-dev && npm install ./build/timetracking-0.0.0-beta.0.tgz -g"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.74",
