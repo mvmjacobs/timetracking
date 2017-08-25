@@ -21,12 +21,24 @@ export default class Task {
 		this.log = values ? values.log : [];
 	}
 
-	public setStatus(status: TaskStatus): void {
-		this.status = status;
+	public getName(): string {
+		return this.name;
 	}
 
 	public setDescription(description: string): void {
 		this.description = description ? description : this.description ? this.description : "";
+	}
+
+	public getDescription(): string {
+		return this.description;
+	}
+
+	public setStatus(status: TaskStatus): void {
+		this.status = status;
+	}
+
+	public getStatus(): TaskStatus {
+		return this.status;
 	}
 
 	public addLog(operation: string): void {
@@ -53,8 +65,7 @@ export default class Task {
 
 	public pause(): boolean {
 		this.timings[this.timings.length - 1].stop = moment().toDate();
-		// Doesn't working. I don't know why
-		// this.setStatus("PAUSED");
+		this.setStatus(TaskStatus.PAUSED);
 		this.addLog("pause");
 		return true;
 	}
