@@ -29,7 +29,10 @@
             false
         ],
         "no-consecutive-blank-lines": true,
-        "eofline": true
+        "eofline": true,
+        "prefer-const": false,
+        "no-var-keyword": true,
+        "ban-types": false
     },
     "rulesDirectory": []
 }
