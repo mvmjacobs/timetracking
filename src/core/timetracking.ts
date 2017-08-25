@@ -1,6 +1,9 @@
+// import 3th party packages
 import * as Configstore from "configstore";
 import * as _ from "lodash";
-import Task from "./task";
+
+// import models
+import { Task } from "./task";
 import { TaskStatus } from "./task-status";
 
 export default class Timetracking {
