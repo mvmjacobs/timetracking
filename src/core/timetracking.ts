@@ -3,13 +3,13 @@ import * as Configstore from "configstore";
 import * as _ from "lodash";
 
 // import models
-import { Task } from "./task";
-import { TaskStatus } from "./task-status";
+import Task from "./task";
+import TaskStatus from "./task-status";
 
 export default class Timetracking {
+	public config: any;
 	private configStore: Configstore;
 	private tasks: Task[];
-	private config: any;
 
 	constructor(configStore) {
 		this.configStore = configStore;

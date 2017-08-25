@@ -4,7 +4,7 @@ const Configstore = require("configstore");
 const pkg = require("../package.json");
 
 // import models
-import { Timetracking } from "./core/Timetracking";
+import Timetracking from "./core/Timetracking";
 
 const config = new Configstore(pkg.name, {
 	config: {

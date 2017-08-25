@@ -3,7 +3,7 @@ import * as _ from "lodash/array";
 import * as moment from "moment";
 
 // import models
-import { TaskStatus } from "./task-status";
+import TaskStatus from "./task-status";
 
 export default class Task {
 	private name: string;
