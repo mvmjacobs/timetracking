@@ -4,7 +4,7 @@ import * as _ from "lodash";
 
 // import models
 import Task from "./task";
-import TaskStatus from "./task-status";
+import { TaskStatus } from "./task-status";
 
 export default class Timetracking {
 	public config: any;
