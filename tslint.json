@@ -32,7 +32,8 @@
         "eofline": true,
         "prefer-const": false,
         "no-var-keyword": true,
-        "ban-types": false
+        "ban-types": false,
+        "no-var-requires": false
     },
     "rulesDirectory": []
 }
