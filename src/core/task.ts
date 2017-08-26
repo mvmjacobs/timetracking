@@ -32,7 +32,7 @@ export class Task {
 		if (!this.log) {
 			this.log = [];
 		}
-		this.log.push(operation + "#" + moment().toISOString());
+		this.log.push(operation + "#" + moment().format());
 	}
 
 	public start(description: string): boolean {
@@ -42,7 +42,7 @@ export class Task {
 			return false;
 		}
 		this.timings.push({
-			start: moment().toDate(),
+			start: moment().format(),
 		});
 		this.setDescription(description);
 		this.setStatus(TaskStatus.IN_PROGRESS);
@@ -51,7 +51,7 @@ export class Task {
 	}
 
 	public pause(): void {
-		this.timings[this.timings.length - 1].stop = moment().toDate();
+		this.timings[this.timings.length - 1].stop = moment().format();
 		this.setStatus(TaskStatus.PAUSED);
 		this.addLog("pause");
 	}
