@@ -4,6 +4,7 @@ export declare class Timetracking {
     private tasks;
     constructor(configStore: any);
     start(taskName: string, description: string, pauseOthers: boolean): void;
+    finish(taskName: string): void;
     private getTask(key);
     private storeTask(task);
     private updateTasks();

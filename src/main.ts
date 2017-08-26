@@ -27,4 +27,13 @@ program
 	});
 
 program
+	.version(pkg.version)
+	.command("finish <task>")
+	.description("Finish a task.")
+	.alias("f")
+	.action((task) => {
+		timetracking.finish(task);
+	});
+
+program
 	.parse(process.argv);

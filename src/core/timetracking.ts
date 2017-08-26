@@ -36,6 +36,25 @@ export class Timetracking {
 		}
 	}
 
+	public finish(taskName: string): void {
+		if (!this.tasks || this.tasks.length === 0) {
+			console.log("There are no tasks added yet.");
+			return;
+		}
+		let idx = _.findIndex(this.tasks, ["name", taskName]);
+		if (idx === -1) {
+			console.log("Task %s not found.", taskName);
+			return;
+		}
+		let task = this.getTask(taskName);
+		if (task.stop(TaskStatus.FINISHED)) {
+			this.tasks[idx] = task;
+			if (this.updateTasks()) {
+				console.log("Task %s has been completed.", taskName);
+			}
+		}
+	}
+
 	private getTask(key: string): Task {
 		return new Task(key, _.find(this.tasks, ["name", key]));
 	}
