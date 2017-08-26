@@ -4,7 +4,7 @@ const Configstore = require("configstore");
 const pkg = require("../package.json");
 
 // import models
-import Timetracking from "./core/Timetracking";
+import { Timetracking } from "./core/Timetracking";
 
 const config = new Configstore(pkg.name, {
 	config: {
@@ -24,5 +24,7 @@ program
 	.option("-n", "Do not pause others taks in progress")
 	.action((task, description, options) => {
 		timetracking.start(task, description, !options.N && (options.Y || timetracking.config.pause_others_on_start));
-	})
+	});
+
+program
 	.parse(process.argv);

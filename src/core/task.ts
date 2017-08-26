@@ -5,7 +5,7 @@ import * as moment from "moment";
 // import models
 import { TaskStatus } from "./task-status";
 
-export default class Task {
+export class Task {
 	private name: string;
 	private description: string;
 	private status: TaskStatus;
