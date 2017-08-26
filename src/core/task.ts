@@ -29,7 +29,7 @@ export class Task {
 	public start(description: string): boolean {
 		let lastTime = _.last(this.log);
 		if (lastTime && lastTime.start && !lastTime.stop) {
-			console.log("This tasks already started.");
+			console.log("This task already has been started.");
 			return false;
 		}
 		this.log.push({
@@ -43,5 +43,20 @@ export class Task {
 	public pause(): void {
 		this.log[this.log.length - 1].stop = moment().format();
 		this.setStatus(TaskStatus.PAUSED);
+	}
+
+	public stop(status: TaskStatus): boolean {
+		let lastTime = _.last(this.log);
+		if (lastTime && lastTime.stop) {
+			if (status === TaskStatus.FINISHED) {
+				console.log("This task already has been completed.");
+			} else if (status === TaskStatus.PAUSED) {
+				console.log("This task already has been paused.");
+			}
+			return false;
+		}
+		this.log[this.log.length - 1].stop = moment().format();
+		this.setStatus(status);
+		return true;
 	}
 }

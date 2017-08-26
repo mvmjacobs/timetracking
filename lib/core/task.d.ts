@@ -9,4 +9,5 @@ export declare class Task {
     setStatus(status: TaskStatus): void;
     start(description: string): boolean;
     pause(): void;
+    stop(status: TaskStatus): boolean;
 }
