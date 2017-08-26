@@ -17,7 +17,7 @@ export class Timetracking {
 		this.config = configStore.all.config ? configStore.all.config : {};
 	}
 
-	public start(taskName: string, description: string, pauseOthers: boolean) {
+	public start(taskName: string, description: string, pauseOthers: boolean): void {
 		if (pauseOthers) {
 			if (this.tasks && this.tasks.length > 0) {
 				this.tasks.forEach((t, i = 0) => {
