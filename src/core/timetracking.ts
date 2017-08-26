@@ -51,4 +51,14 @@ export class Timetracking {
 		this.configStore.set("tasks", this.tasks);
 		return true;
 	}
+
+	private updateTasks(): boolean {
+		try {
+			this.configStore.set("tasks", this.tasks);
+			return true;
+		} catch (error) {
+			console.log("An error occurred.");
+			return false;
+		}
+	}
 }
