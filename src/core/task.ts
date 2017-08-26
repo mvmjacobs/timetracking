@@ -9,14 +9,12 @@ export class Task {
 	public name: string;
 	public description: string;
 	public status: TaskStatus;
-	public timings: any;
 	public log: any[];
 
 	constructor(name: string, values: any) {
 		this.name = name;
 		this.description = values ? values.description : "";
 		this.status = values ? this.getStatusByName(values.status) : TaskStatus.IN_PROGRESS;
-		this.timings = values ? values.timings : [];
 		this.log = values ? values.log : [];
 	}
 
@@ -28,32 +26,23 @@ export class Task {
 		this.status = status;
 	}
 
-	public addLog(operation: string): void {
-		if (!this.log) {
-			this.log = [];
-		}
-		this.log.push(operation + "#" + moment().format());
-	}
-
 	public start(description: string): boolean {
-		let lastTime = _.last(this.timings);
+		let lastTime = _.last(this.log);
 		if (lastTime && lastTime.start && !lastTime.stop) {
 			console.log("This tasks already started.");
 			return false;
 		}
-		this.timings.push({
+		this.log.push({
 			start: moment().format(),
 		});
 		this.setDescription(description);
 		this.setStatus(TaskStatus.IN_PROGRESS);
-		this.addLog("start");
 		return true;
 	}
 
 	public pause(): void {
-		this.timings[this.timings.length - 1].stop = moment().format();
+		this.log[this.log.length - 1].stop = moment().format();
 		this.setStatus(TaskStatus.PAUSED);
-		this.addLog("pause");
 	}
 
 	private getStatusByName(status: string): TaskStatus {
