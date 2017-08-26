@@ -6,11 +6,11 @@ import * as moment from "moment";
 import { TaskStatus } from "./task-status";
 
 export class Task {
-	private name: string;
-	private description: string;
-	private status: TaskStatus;
-	private timings: any;
-	private log: any[];
+	public name: string;
+	public description: string;
+	public status: TaskStatus;
+	public timings: any;
+	public log: any[];
 
 	constructor(name: string, values: any) {
 		this.name = name;
@@ -20,24 +20,12 @@ export class Task {
 		this.log = values ? values.log : [];
 	}
 
-	public getName(): string {
-		return this.name;
-	}
-
 	public setDescription(description: string): void {
 		this.description = description ? description : this.description ? this.description : "";
 	}
 
-	public getDescription(): string {
-		return this.description;
-	}
-
 	public setStatus(status: TaskStatus): void {
 		this.status = status;
-	}
-
-	public getStatus(): TaskStatus {
-		return this.status;
 	}
 
 	public addLog(operation: string): void {

@@ -13,8 +13,8 @@ export class Timetracking {
 
 	constructor(configStore) {
 		this.configStore = configStore;
-		this.tasks = (configStore.all.tasks) ? configStore.all.tasks : {};
-		this.config = (configStore.all.config) ? configStore.all.config : {};
+		this.tasks = configStore.all.tasks ? configStore.all.tasks : [];
+		this.config = configStore.all.config ? configStore.all.config : {};
 	}
 
 	public getTask(key: string): Task {
@@ -25,20 +25,21 @@ export class Timetracking {
 		if (pauseOthers) {
 			if (this.tasks && this.tasks.length) {
 				this.tasks.forEach((t) => {
-					if (t.getName() !== taskName && t.getStatus() === TaskStatus.IN_PROGRESS) {
-						t.pause();
+					if (t.name !== taskName && t.status === TaskStatus.IN_PROGRESS) {
+						let tsk = this.getTask(t.name);
+						tsk.pause();
 					}
 				});
 			}
 		}
 		let task = this.getTask(taskName);
 		if (task.start(description) && this.storeTask(task)) {
-			console.log("Task %s started.", task.getName());
+			console.log("Task %s started.", task.name);
 		}
 	}
 
 	public storeTask(task: Task): boolean {
-		let id = _.findIndex(this.tasks, ["name", task.getName()]);
+		let id = _.findIndex(this.tasks, ["name", task.name]);
 		if (id >= 0) {
 			this.tasks[id] = Object.assign({}, task);
 		} else {
