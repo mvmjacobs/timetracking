@@ -17,18 +17,16 @@ export class Timetracking {
 		this.config = configStore.all.config ? configStore.all.config : {};
 	}
 
-	public getTask(key: string): Task {
-		return new Task(key, _.find(this.tasks, ["name", key]));
-	}
-
 	public start(taskName: string, description: string, pauseOthers: boolean) {
 		if (pauseOthers) {
-			if (this.tasks && this.tasks.length) {
-				this.tasks.forEach((t) => {
+			if (this.tasks && this.tasks.length > 0) {
+				this.tasks.forEach((t, i = 0) => {
 					if (t.name !== taskName && t.status === TaskStatus.IN_PROGRESS) {
 						let tsk = this.getTask(t.name);
 						tsk.pause();
+						this.tasks[i] = tsk;
 					}
+					i++;
 				});
 			}
 		}
@@ -38,7 +36,11 @@ export class Timetracking {
 		}
 	}
 
-	public storeTask(task: Task): boolean {
+	private getTask(key: string): Task {
+		return new Task(key, _.find(this.tasks, ["name", key]));
+	}
+
+	private storeTask(task: Task): boolean {
 		let id = _.findIndex(this.tasks, ["name", task.name]);
 		if (id >= 0) {
 			this.tasks[id] = Object.assign({}, task);
