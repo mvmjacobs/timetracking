@@ -23,16 +23,25 @@ export class Timetracking {
 				this.tasks.forEach((t, i = 0) => {
 					if (t.name !== taskName && t.status === TaskStatus.IN_PROGRESS) {
 						let tsk = this.getTask(t.name);
-						tsk.pause();
-						this.tasks[i] = tsk;
+						if (tsk.stop(TaskStatus.PAUSED)) {
+							this.tasks[i] = tsk;
+						}
 					}
 					i++;
 				});
 			}
 		}
 		let task = this.getTask(taskName);
-		if (task.start(description) && this.storeTask(task)) {
-			console.log("Task %s started.", task.name);
+		if (task.start(description)) {
+			let idx = _.findIndex(this.tasks, ["name", task.name]);
+			if (idx === -1) {
+				this.tasks.push(task);
+			} else {
+				this.tasks[idx] = task;
+			}
+			if (this.updateTasks()) {
+				console.log("Task %s started.", task.name);
+			}
 		}
 	}
 
@@ -57,18 +66,6 @@ export class Timetracking {
 
 	private getTask(key: string): Task {
 		return new Task(key, _.find(this.tasks, ["name", key]));
-	}
-
-	private storeTask(task: Task): boolean {
-		let id = _.findIndex(this.tasks, ["name", task.name]);
-		if (id >= 0) {
-			this.tasks[id] = Object.assign({}, task);
-		} else {
-			this.tasks.push(task);
-		}
-
-		this.configStore.set("tasks", this.tasks);
-		return true;
 	}
 
 	private updateTasks(): boolean {

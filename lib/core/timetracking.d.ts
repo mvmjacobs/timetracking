@@ -6,6 +6,5 @@ export declare class Timetracking {
     start(taskName: string, description: string, pauseOthers: boolean): void;
     finish(taskName: string): void;
     private getTask(key);
-    private storeTask(task);
     private updateTasks();
 }

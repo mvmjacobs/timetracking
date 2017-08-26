@@ -8,6 +8,5 @@ export declare class Task {
     setDescription(description: string): void;
     setStatus(status: TaskStatus): void;
     start(description: string): boolean;
-    pause(): void;
     stop(status: TaskStatus): boolean;
 }

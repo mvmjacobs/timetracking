@@ -40,11 +40,6 @@ export class Task {
 		return true;
 	}
 
-	public pause(): void {
-		this.log[this.log.length - 1].stop = moment().format();
-		this.setStatus(TaskStatus.PAUSED);
-	}
-
 	public stop(status: TaskStatus): boolean {
 		let lastTime = _.last(this.log);
 		if (lastTime && lastTime.stop) {
