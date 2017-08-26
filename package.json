@@ -16,8 +16,8 @@
   "bugs": {
     "url": "https://github.com/mvmjacobs/timetracking/issues"
   },
-  "main": "lib/index.js",
-  "types": "lib/index",
+  "main": "lib/main.js",
+  "types": "lib/main",
   "bin": {
     "tm": "./bin/timetracking",
     "timetracking": "./bin/timetracking"
