@@ -15,8 +15,7 @@ export class Task {
 	constructor(name: string, values: any) {
 		this.name = name;
 		this.description = values ? values.description : "";
-		// TODO: this.status must be values.status
-		this.status = TaskStatus.IN_PROGRESS;
+		this.status = values ? this.getStatusByName(values.status) : TaskStatus.IN_PROGRESS;
 		this.timings = values ? values.timings : [];
 		this.log = values ? values.log : [];
 	}
@@ -68,5 +67,21 @@ export class Task {
 		this.setStatus(TaskStatus.PAUSED);
 		this.addLog("pause");
 		return true;
+	}
+
+	private getStatusByName(status: string): TaskStatus {
+		if (!status) {
+			return TaskStatus.IN_PROGRESS;
+		}
+		switch (status) {
+			case "IN_PROGRESS":
+				return TaskStatus.IN_PROGRESS;
+			case "PAUSED":
+				return TaskStatus.PAUSED;
+			case "FINISHED":
+				return TaskStatus.FINISHED;
+			default:
+				return TaskStatus.IN_PROGRESS;
+		}
 	}
 }
