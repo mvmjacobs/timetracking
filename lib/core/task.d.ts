@@ -10,6 +10,6 @@ export declare class Task {
     setStatus(status: TaskStatus): void;
     addLog(operation: string): void;
     start(description: string): boolean;
-    pause(): boolean;
+    pause(): void;
     private getStatusByName(status);
 }

@@ -50,11 +50,10 @@ export class Task {
 		return true;
 	}
 
-	public pause(): boolean {
+	public pause(): void {
 		this.timings[this.timings.length - 1].stop = moment().toDate();
 		this.setStatus(TaskStatus.PAUSED);
 		this.addLog("pause");
-		return true;
 	}
 
 	private getStatusByName(status: string): TaskStatus {
