@@ -43,5 +43,13 @@ program
 	});
 
 program
+	.command("list [date]")
+	.description("Resume time of the taks. You can pass the date on format configured (dd/MM/yyyy).")
+	.alias("l")
+	.action((date) => {
+		timetracking.list(date);
+	});
+
+program
 	.version(pkg.version)
 	.parse(process.argv);

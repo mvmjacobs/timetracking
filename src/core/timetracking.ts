@@ -1,6 +1,8 @@
 // import 3th party packages
+import * as colors from "colors";
 import * as Configstore from "configstore";
 import * as _ from "lodash";
+import * as moment from "moment";
 
 // import models
 import { Task } from "./task";
@@ -62,6 +64,50 @@ export class Timetracking {
 				let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
 				console.log("Task %s has been %s.", taskName, msg);
 			}
+		}
+	}
+
+	public list(date: string): void {
+		if (!this.tasks || this.tasks.length === 0) {
+			console.log("There are no tasks added yet.");
+			return;
+		}
+		if (!moment(date, "DD/MM/YYYY").isValid()) {
+			console.log("Date it is not in a valid format.");
+			return;
+		}
+		let timings: any[] = [];
+		let beginTotal = moment();
+		let diffTotal = moment();
+		let hours;
+		let min;
+		this.tasks.forEach((t) => {
+			let times = _.filter(t.log, (l) => {
+				return moment(l.start).format("DD/MM/YYYY") === moment(date, "DD/MM/YYYY").format("DD/MM/YYYY");
+			});
+			if (times && times.length > 0) {
+				let beginTask = moment();
+				let diffTask = moment();
+				times.forEach((time) => {
+					diffTask.add(moment(time.stop).diff(moment(time.start), "ms"));
+					diffTotal.add(moment(time.stop).diff(moment(time.start), "ms"));
+				});
+				hours = diffTask.diff(beginTask, "hours");
+				min = moment.utc(moment(diffTask, "HH:mm:ss").diff(moment(beginTask, "HH:mm:ss"))).format("mm");
+				timings.push({ name: t.name, time: hours + ":" + min });
+			}
+		});
+		hours = diffTotal.diff(beginTotal, "hours");
+		min = moment.utc(moment(diffTotal, "HH:mm:ss").diff(moment(beginTotal, "HH:mm:ss"))).format("mm");
+		console.log("");
+		console.log("  %s %s ", colors.bgGreen(" " + hours + ":" + min + " "), colors.inverse(" DATE: " + date + " "));
+		console.log(colors.white("   TIME | TASK"));
+		if (!timings || timings.length === 0) {
+			console.log(colors.grey("   --"));
+		} else {
+			timings.forEach((time) => {
+				console.log(colors.grey("   " + time.time + " | " + time.name));
+			});
 		}
 	}
 
