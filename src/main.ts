@@ -17,7 +17,6 @@ const config = new Configstore(pkg.name, {
 const timetracking = new Timetracking(config);
 
 program
-	.version(pkg.version)
 	.command("start <task> [description]")
 	.description("Start a task with a description.")
 	.alias("s")
@@ -28,7 +27,6 @@ program
 	});
 
 program
-	.version(pkg.version)
 	.command("finish <task>")
 	.description("Finish a task.")
 	.alias("f")
@@ -37,7 +35,6 @@ program
 	});
 
 program
-	.version(pkg.version)
 	.command("pause <task>")
 	.description("Pause a task.")
 	.alias("p")
@@ -46,4 +43,5 @@ program
 	});
 
 program
+	.version(pkg.version)
 	.parse(process.argv);
