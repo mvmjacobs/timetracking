@@ -1,4 +1,4 @@
-# Timetracking 
+# Timetracking :hourglass:
 A simple command line app to track your time.
 
 **It's still under development.**
