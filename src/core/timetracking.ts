@@ -72,9 +72,13 @@ export class Timetracking {
 			console.log("There are no tasks added yet.");
 			return;
 		}
-		if (!moment(date, "DD/MM/YYYY").isValid()) {
-			console.log("Date it is not in a valid format.");
-			return;
+		if (date === undefined) {
+			date = moment().format("DD/MM/YYYY");
+		} else {
+			if (!moment(date, "DD/MM/YYYY").isValid()) {
+				console.log("Date it is not in a valid format.");
+				return;
+			}
 		}
 		let timings: any[] = [];
 		let beginTotal = moment();
