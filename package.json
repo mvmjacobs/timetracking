@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@types/node": "^8.0.24",
+    "colors": "^1.1.2",
     "commander": "^2.11.0",
     "configstore": "^3.1.1",
     "lodash": "^4.17.4",

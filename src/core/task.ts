@@ -27,7 +27,8 @@ export class Task {
 	}
 
 	public start(description: string): boolean {
-		if (this.status === TaskStatus.IN_PROGRESS) {
+		let lastTime = _.last(this.log);
+		if (lastTime && lastTime.start && !lastTime.stop) {
 			console.log("This task already has been started.");
 			return false;
 		}
