@@ -1,4 +1,5 @@
-# Timetracking 
+Timetracking
+====================
 A simple command line app to track your time.
 
 **It's still under development.**
