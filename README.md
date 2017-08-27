@@ -31,7 +31,7 @@ You can start a task running the following command:
 ```
 $ tm start <task name> [task description]
 ```
-By default, when you start a task, all other tasks in progress are paused. Add the option `-n` to the start command to not pause:
+By default, when you start a task, all other tasks in progress are paused. Add the option `-n` to not pause:
 ```
 $ tm start <task name> [task description] -n
 ```
