@@ -1,6 +1,6 @@
 {
   "name": "timetracking",
-  "version": "0.0.0",
+  "version": "0.0.0-beta.1",
   "description": "A simple command line app to track your time.",
   "keywords": [
     "timetracking",
@@ -16,8 +16,27 @@
   "bugs": {
     "url": "https://github.com/mvmjacobs/timetracking/issues"
   },
-  "main": "index.js",
+  "main": "lib/main.js",
+  "types": "lib/main",
+  "bin": {
+    "tm": "./bin/timetracking",
+    "timetracking": "./bin/timetracking"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "tsc && npm pack && move ./*.tgz ./build/",
+    "install-build-dev": "npm run build-dev && npm install ./build/timetracking-0.0.0-beta.1.tgz -g"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.74",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "@types/node": "^8.0.24",
+    "commander": "^2.11.0",
+    "configstore": "^3.1.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1"
   }
 }
