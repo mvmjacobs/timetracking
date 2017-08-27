@@ -45,7 +45,7 @@ export class Timetracking {
 		}
 	}
 
-	public finish(taskName: string): void {
+	public stop(taskName: string, status: TaskStatus): void {
 		if (!this.tasks || this.tasks.length === 0) {
 			console.log("There are no tasks added yet.");
 			return;
@@ -56,10 +56,11 @@ export class Timetracking {
 			return;
 		}
 		let task = this.getTask(taskName);
-		if (task.stop(TaskStatus.FINISHED)) {
+		if (task.stop(status)) {
 			this.tasks[idx] = task;
 			if (this.updateTasks()) {
-				console.log("Task %s has been completed.", taskName);
+				let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
+				console.log("Task %s has been %s.", taskName, msg);
 			}
 		}
 	}

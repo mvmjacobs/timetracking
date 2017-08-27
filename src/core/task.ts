@@ -27,8 +27,7 @@ export class Task {
 	}
 
 	public start(description: string): boolean {
-		let lastTime = _.last(this.log);
-		if (lastTime && lastTime.start && !lastTime.stop) {
+		if (this.status === TaskStatus.IN_PROGRESS) {
 			console.log("This task already has been started.");
 			return false;
 		}
@@ -42,15 +41,14 @@ export class Task {
 
 	public stop(status: TaskStatus): boolean {
 		let lastTime = _.last(this.log);
-		if (lastTime && lastTime.stop) {
-			if (status === TaskStatus.FINISHED) {
-				console.log("This task already has been completed.");
-			} else if (status === TaskStatus.PAUSED) {
-				console.log("This task already has been paused.");
-			}
+		if (this.status === status) {
+			let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
+			console.log("This task already has been %s.", msg);
 			return false;
 		}
-		this.log[this.log.length - 1].stop = moment().format();
+		if (lastTime && !lastTime.stop) {
+			this.log[this.log.length - 1].stop = moment().format();
+		}
 		this.setStatus(status);
 		return true;
 	}

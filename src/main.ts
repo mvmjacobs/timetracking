@@ -4,7 +4,8 @@ const Configstore = require("configstore");
 const pkg = require("../package.json");
 
 // import models
-import { Timetracking } from "./core/Timetracking";
+import { TaskStatus } from "./core/task-status";
+import { Timetracking } from "./core/timetracking";
 
 const config = new Configstore(pkg.name, {
 	config: {
@@ -32,7 +33,16 @@ program
 	.description("Finish a task.")
 	.alias("f")
 	.action((task) => {
-		timetracking.finish(task);
+		timetracking.stop(task, TaskStatus.FINISHED);
+	});
+
+program
+	.version(pkg.version)
+	.command("pause <task>")
+	.description("Pause a task.")
+	.alias("p")
+	.action((task) => {
+		timetracking.stop(task, TaskStatus.PAUSED);
 	});
 
 program
