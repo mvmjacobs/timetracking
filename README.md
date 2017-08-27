@@ -1,6 +1,4 @@
 # Timetracking :hourglass:
-A simple command line app to track your time.
-
 [![npm version](https://img.shields.io/npm/v/timetracking.svg?style=flat-square)](https://www.npmjs.com/package/timetracking)
 
 A simple command line app to track your time. It was inspired by [Timet](https://github.com/fabiorogeriosj/timet) and [Time tracker](https://github.com/danibram/time-tracker-cli).
