@@ -1,4 +1,5 @@
 # Timetracking :hourglass:
+A simple command line app to track your time.
 
 [![npm version](https://img.shields.io/npm/v/timetracking.svg?style=flat-square)](https://www.npmjs.com/package/timetracking)
 
@@ -30,6 +31,7 @@ Usage: timetracking|tm [options] [command]
 
 #### Start
 You can start a task running the following command:
+
 ```
 $ tm start <task name> [task description]
 ```
