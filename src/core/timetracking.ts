@@ -72,10 +72,11 @@ export class Timetracking {
 			console.log("There are no tasks added yet.");
 			return;
 		}
+		let dateFormat = this.config && this.config.date_format ? this.config.date_format.toUpperCase() : "DD/MM/YYYY";
 		if (date === undefined) {
-			date = moment().format("DD/MM/YYYY");
+			date = moment().format(dateFormat);
 		} else {
-			if (!moment(date, "DD/MM/YYYY").isValid()) {
+			if (!moment(date, dateFormat).isValid()) {
 				console.log("Date it is not in a valid format.");
 				return;
 			}
@@ -87,7 +88,7 @@ export class Timetracking {
 		let min;
 		this.tasks.forEach((t) => {
 			let times = _.filter(t.log, (l) => {
-				return moment(l.start).format("DD/MM/YYYY") === moment(date, "DD/MM/YYYY").format("DD/MM/YYYY");
+				return moment(l.start).format(dateFormat) === moment(date, dateFormat).format(dateFormat);
 			});
 			if (times && times.length > 0) {
 				let beginTask = moment();
