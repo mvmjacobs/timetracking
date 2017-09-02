@@ -98,14 +98,14 @@ export class Timetracking {
 				});
 				hours = diffTask.diff(beginTask, "hours");
 				min = moment.utc(moment(diffTask, "HH:mm:ss").diff(moment(beginTask, "HH:mm:ss"))).format("mm");
-				timings.push({ name: t.name, time: hours + ":" + min });
+				timings.push({ name: t.name, time: ((hours < 10 ? "0" : "") + hours) + ":" + min });
 			}
 		});
 		hours = diffTotal.diff(beginTotal, "hours");
 		min = moment.utc(moment(diffTotal, "HH:mm:ss").diff(moment(beginTotal, "HH:mm:ss"))).format("mm");
 		console.log("");
-		console.log("  %s %s ", colors.bgGreen(" " + hours + ":" + min + " "), colors.inverse(" DATE: " + date + " "));
-		console.log(colors.white("   TIME | TASK"));
+		console.log("  %s %s ", colors.bgGreen(" " + ((hours < 10 ? "0" : "") + hours) + ":" + min + " "), colors.inverse(" DATE: " + date + " "));
+		console.log(colors.white("   TIME  | TASK"));
 		if (!timings || timings.length === 0) {
 			console.log(colors.grey("   --"));
 		} else {
