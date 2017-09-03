@@ -108,7 +108,7 @@ export class Timetracking {
 		console.log("  %s %s ", colors.bgGreen(" " + ((hours < 10 ? "0" : "") + hours) + ":" + min + " "), colors.inverse(" DATE: " + date + " "));
 		console.log(colors.white("   TIME  | TASK"));
 		if (!timings || timings.length === 0) {
-			console.log(colors.grey("   --"));
+			console.log(colors.grey("   ---   | ---"));
 		} else {
 			timings.forEach((time) => {
 				console.log(colors.grey("   " + time.time + " | " + time.name));
