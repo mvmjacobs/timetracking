@@ -33,7 +33,10 @@
         "prefer-const": false,
         "no-var-keyword": true,
         "ban-types": false,
-        "no-var-requires": false
+        "no-var-requires": false,
+        "max-line-length": [
+            false
+        ]
     },
     "rulesDirectory": []
 }
