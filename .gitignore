@@ -92,3 +92,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+### Others ###
+lib/**/*
