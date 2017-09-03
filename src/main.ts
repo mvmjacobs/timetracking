@@ -27,16 +27,16 @@ program
 	});
 
 program
-	.command("finish <task>")
-	.description("Finish a task.")
+	.command("finish [task]")
+	.description("Finish a task. If you do not inform the [task] all tasks in progress will be completed.")
 	.alias("f")
 	.action((task) => {
 		timetracking.stop(task, TaskStatus.FINISHED);
 	});
 
 program
-	.command("pause <task>")
-	.description("Pause a task.")
+	.command("pause [task]")
+	.description("Pause a task. If you do not inform the [task] all tasks in progress will be paused.")
 	.alias("p")
 	.action((task) => {
 		timetracking.stop(task, TaskStatus.PAUSED);

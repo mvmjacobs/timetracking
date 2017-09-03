@@ -22,8 +22,8 @@ Usage: timetracking|tm [options] [command]
 
   Commands:
     start|s <task> [description]   Start task with a description.
-    pause|p <task>                 Pause a task.
-    finish|f <task>                Finish a task.
+    pause|p [task]                 Pause a task. If you do not inform the [task] all tasks in progress will be paused.
+    finish|f [task]                Finish a task. If you do not inform the [task] all tasks in progress will be completed.
     list|l [date]                  Resume time of the taks. You can pass the date on format configured (dd/MM/yyyy).
 
 
@@ -50,18 +50,20 @@ $ tm s <task name> [task description] -n
 #### Pause
 You can pause a task running the following command:
 ```
-$ timetracking pause <task name>
+$ timetracking pause [task name]
 or
-$ tm p <task name>
+$ tm p [task name]
 ```
+If you do not inform the **[task]** all tasks in progress will be paused.
 
 #### Finish
 You can finish a task running the following command:
 ```
-$ timetracking finish <task name>
+$ timetracking finish [task name]
 or
-$ tm f <task name>
+$ tm f [task name]
 ```
+If you do not inform the **[task]** all tasks in progress will be completed.
 
 #### List
 You can get a resume of your tasks in a date running the following command:

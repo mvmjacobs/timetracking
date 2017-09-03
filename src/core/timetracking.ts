@@ -52,17 +52,33 @@ export class Timetracking {
 			console.log("There are no tasks added yet.");
 			return;
 		}
-		let idx = _.findIndex(this.tasks, ["name", taskName]);
-		if (idx === -1) {
-			console.log("Task %s not found.", taskName);
-			return;
+		if (!taskName) {
+			this.tasks.forEach((t, idx = 0) => {
+				if (t.status === TaskStatus.IN_PROGRESS) {
+					let task = this.getTask(t.name);
+					if (task.stop(status)) {
+						this.tasks[idx] = task;
+					}
+				}
+				idx++;
+			});
+		} else {
+			let idx = _.findIndex(this.tasks, ["name", taskName]);
+			if (idx === -1) {
+				console.log("Task %s not found.", taskName);
+				return;
+			}
+			let task = this.getTask(taskName);
+			if (task.stop(status)) {
+				this.tasks[idx] = task;
+			}
 		}
-		let task = this.getTask(taskName);
-		if (task.stop(status)) {
-			this.tasks[idx] = task;
-			if (this.updateTasks()) {
-				let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
+		if (this.updateTasks()) {
+			let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
+			if (taskName) {
 				console.log("Task %s has been %s.", taskName, msg);
+			} else {
+				console.log("All tasks in progress have been %s.", msg);
 			}
 		}
 	}
