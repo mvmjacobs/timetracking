@@ -51,6 +51,14 @@ program
 	});
 
 program
+	.command("add <task> <time_spent> [date]")
+	.description("Add a task with a specific time spent and on a specific date. You can pass the date on format configured (" + (config && config.all.config ? config.all.config.date_format : "dd/MM/yyyy") + ")")
+	.alias("a")
+	.action((task, timeSpent, date) => {
+		timetracking.add(task, timeSpent, date);
+	});
+
+program
 	.version(pkg.version)
 	.parse(process.argv);
 
