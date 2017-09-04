@@ -1,3 +1,12 @@
+<a name="1.1.1"></a>
+## [v1.1.1](https://github.com/mvmjacobs/timetracking/releases/tag/v1.1.1) | 2017-09-04
+
+### Improvements
+* **list**: Now displays the task status. ([#14](https://github.com/mvmjacobs/timetracking/issues/14)) ([61d25ce](https://github.com/mvmjacobs/timetracking/commit/61d25ce))
+
+### Bug Fixes
+* **add**: 	Fix expression to validate `[time_spent]` parameter. ([#13](https://github.com/mvmjacobs/timetracking/issues/13)) ([9a495f1](https://github.com/mvmjacobs/timetracking/commit/9a495f1))
+
 <a name="1.1.0"></a>
 ## [v1.1.0](https://github.com/mvmjacobs/timetracking/releases/tag/v1.1.0) | 2017-09-04
 
