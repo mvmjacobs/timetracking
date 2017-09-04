@@ -115,19 +115,19 @@ export class Timetracking {
 				});
 				hours = diffTask.diff(beginTask, "hours");
 				min = moment.utc(moment(diffTask, "HH:mm:ss").diff(moment(beginTask, "HH:mm:ss"))).format("mm");
-				timings.push({ name: t.name, time: ((hours < 10 ? "0" : "") + hours) + ":" + min });
+				timings.push({ name: t.name, time: ((hours < 10 ? "0" : "") + hours) + ":" + min, status: this.formatStatus(t.status) });
 			}
 		});
 		hours = diffTotal.diff(beginTotal, "hours");
 		min = moment.utc(moment(diffTotal, "HH:mm:ss").diff(moment(beginTotal, "HH:mm:ss"))).format("mm");
 		console.log("");
-		console.log("  %s %s ", colors.bgGreen(" " + ((hours < 10 ? "0" : "") + hours) + ":" + min + " "), colors.inverse(" DATE: " + date + " "));
-		console.log(colors.white("   TIME  | TASK"));
+		console.log("  %s %s ", colors.bgGreen(" " + ((hours < 10 ? "0" : "") + hours) + ":" + min + " "), colors.inverse(" DATE: " + date + "   "));
+		console.log(colors.white("   %s  | %s      | %s"), "TIME", "STATUS", "TASK");
 		if (!timings || timings.length === 0) {
-			console.log(colors.grey("   ---   | ---"));
+			console.log(colors.grey("   ---   | ---         | ---"));
 		} else {
 			timings.forEach((time) => {
-				console.log(colors.grey("   " + time.time + " | " + time.name));
+				console.log(colors.grey("   %s | %s | %s"), time.time, time.status + (" ".repeat(11 - time.status.length)), time.name);
 			});
 		}
 	}
@@ -216,5 +216,18 @@ export class Timetracking {
 			return false;
 		}
 		return true;
+	}
+
+	private formatStatus(status: TaskStatus): string {
+		switch (status) {
+			case TaskStatus.IN_PROGRESS:
+				return "In Progress";
+			case TaskStatus.PAUSED:
+				return "Paused";
+			case TaskStatus.FINISHED:
+				return "Finished";
+			default:
+				return "";
+		}
 	}
 }
