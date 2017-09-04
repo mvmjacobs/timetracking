@@ -1,3 +1,11 @@
+<a name="1.1.0"></a>
+## [v1.1.0](https://github.com/mvmjacobs/timetracking/releases/tag/v1.1.0) | 2017-09-04
+
+### Features
+* **add**: New command! Now you can add tasks running the command `add`. [Here](https://github.com/mvmjacobs/timetracking/tree/master#add) you can see how to use. ([#8](https://github.com/mvmjacobs/timetracking/issues/8)) ([a1f5a6](https://github.com/mvmjacobs/timetracking/commit/a1f5a6))
+* **pause**: Now `task` parameter is optional, you can pause all tasks in progress. ([#4](https://github.com/mvmjacobs/timetracking/issues/4)) ([4ab557f](https://github.com/mvmjacobs/timetracking/commit/4ab557f))
+* **finish**: Now `task` parameter is optional, you can complete all tasks in progress. ([#4](https://github.com/mvmjacobs/timetracking/issues/4)) ([4ab557f](https://github.com/mvmjacobs/timetracking/commit/4ab557f))
+
 <a name="1.0.1"></a>
 ## [v1.0.1](https://github.com/mvmjacobs/timetracking/releases/tag/v1.0.1) | 2017-09-02
 
