@@ -115,19 +115,19 @@ export class Timetracking {
 				});
 				hours = diffTask.diff(beginTask, "hours");
 				min = moment.utc(moment(diffTask, "HH:mm:ss").diff(moment(beginTask, "HH:mm:ss"))).format("mm");
-				timings.push({ name: t.name, time: ((hours < 10 ? "0" : "") + hours) + ":" + min });
+				timings.push({ name: t.name, time: ((hours < 10 ? "0" : "") + hours) + ":" + min, status: this.formatStatus(t.status) });
 			}
 		});
 		hours = diffTotal.diff(beginTotal, "hours");
 		min = moment.utc(moment(diffTotal, "HH:mm:ss").diff(moment(beginTotal, "HH:mm:ss"))).format("mm");
 		console.log("");
-		console.log("  %s %s ", colors.bgGreen(" " + ((hours < 10 ? "0" : "") + hours) + ":" + min + " "), colors.inverse(" DATE: " + date + " "));
-		console.log(colors.white("   TIME  | TASK"));
+		console.log("  %s %s ", colors.bgGreen(" " + ((hours < 10 ? "0" : "") + hours) + ":" + min + " "), colors.inverse(" DATE: " + date + "   "));
+		console.log(colors.white("   %s  | %s      | %s"), "TIME", "STATUS", "TASK");
 		if (!timings || timings.length === 0) {
-			console.log(colors.grey("   ---   | ---"));
+			console.log(colors.grey("   ---   | ---         | ---"));
 		} else {
 			timings.forEach((time) => {
-				console.log(colors.grey("   " + time.time + " | " + time.name));
+				console.log(colors.grey("   %s | %s | %s"), time.time, time.status + (" ".repeat(11 - time.status.length)), time.name);
 			});
 		}
 	}
@@ -203,20 +203,31 @@ export class Timetracking {
 		if (!time || time.length > 5) {
 			return false;
 		}
-		let regList = ["([0-24]{1,2})\:+([0-59]{2})", "([0-59]{1,2}\m)", "([0-24]{1,2}\h)"];
+		let regList = ["([0-9]{1,3})\:+([0-5]{1}[0-9]{1})", "([0-9]{1,3}\m)", "([0-9]{1,3}\h)"];
 		let i = 0;
+		let value: any;
 		for (i; i < regList.length; i++) {
 			if (new RegExp(regList[i]).test(time)) {
+				value = new RegExp(regList[i]).exec(time);
 				break;
 			}
 		}
-		if (i >= regList.length) {
-			return false;
-		}
-		let value = new RegExp(regList[i]).exec(time);
-		if (value == null || value[0] !== time) {
+		if (i >= regList.length || (value == null || value[0] !== time)) {
 			return false;
 		}
 		return true;
+	}
+
+	private formatStatus(status: TaskStatus): string {
+		switch (status) {
+			case TaskStatus.IN_PROGRESS:
+				return "In Progress";
+			case TaskStatus.PAUSED:
+				return "Paused";
+			case TaskStatus.FINISHED:
+				return "Finished";
+			default:
+				return "";
+		}
 	}
 }

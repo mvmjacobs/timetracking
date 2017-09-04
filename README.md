@@ -77,7 +77,7 @@ $ tm l [date]
 ```
 The result will be a list of your tasks and the time (`HH:mm`) each took, like this:
 
-[![tm list](http://i.imgur.com/7WBAPYY.png)](https://github.com/mvmjacobs/timetracking#list)
+[![tm list](http://i.imgur.com/c5TUhUX.png)](https://github.com/mvmjacobs/timetracking#list)
 
 > **Note 1**: By default [date] must be in the format configured `dd/MM/yyyy`. This format can be changed by the configuration file, see [Installation](https://github.com/mvmjacobs/timetracking#installation) section.
 >
