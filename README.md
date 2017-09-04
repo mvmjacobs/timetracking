@@ -97,5 +97,8 @@ By default **[date]** paremeter must be in the format `dd/MM/yyyy` and you can p
 
 ---
 
+## How to contribute
+Found a bug? Wrote a cool code? Do you want to help with the documentation? Great! [Learn how to contribute](https://github.com/mvmjacobs/timetracking/blob/master/CONTRIBUTING.md) or [open an issue](https://github.com/mvmjacobs/timetracking/issues) and help make the app even better.
+
 ## License
 This repository is licensed under the [MIT License](https://github.com/mvmjacobs/timetracking/blob/master/LICENSE.md).
