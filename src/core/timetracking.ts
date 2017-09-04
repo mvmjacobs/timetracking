@@ -203,18 +203,16 @@ export class Timetracking {
 		if (!time || time.length > 5) {
 			return false;
 		}
-		let regList = ["([0-24]{1,2})\:+([0-59]{2})", "([0-59]{1,2}\m)", "([0-24]{1,2}\h)"];
+		let regList = ["([0-9]{1,3})\:+([0-5]{1}[0-9]{1})", "([0-9]{1,3}\m)", "([0-9]{1,3}\h)"];
 		let i = 0;
+		let value: any;
 		for (i; i < regList.length; i++) {
 			if (new RegExp(regList[i]).test(time)) {
+				value = new RegExp(regList[i]).exec(time);
 				break;
 			}
 		}
-		if (i >= regList.length) {
-			return false;
-		}
-		let value = new RegExp(regList[i]).exec(time);
-		if (value == null || value[0] !== time) {
+		if (i >= regList.length || (value == null || value[0] !== time)) {
 			return false;
 		}
 		return true;
