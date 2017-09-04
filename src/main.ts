@@ -27,16 +27,16 @@ program
 	});
 
 program
-	.command("finish <task>")
-	.description("Finish a task.")
+	.command("finish [task]")
+	.description("Finish a task. If you do not inform the [task] all tasks in progress will be completed.")
 	.alias("f")
 	.action((task) => {
 		timetracking.stop(task, TaskStatus.FINISHED);
 	});
 
 program
-	.command("pause <task>")
-	.description("Pause a task.")
+	.command("pause [task]")
+	.description("Pause a task. If you do not inform the [task] all tasks in progress will be paused.")
 	.alias("p")
 	.action((task) => {
 		timetracking.stop(task, TaskStatus.PAUSED);
@@ -48,6 +48,14 @@ program
 	.alias("l")
 	.action((date) => {
 		timetracking.list(date);
+	});
+
+program
+	.command("add <task> <time_spent> [date]")
+	.description("Add a task with a specific time spent and on a specific date. You can pass the date on format configured (" + (config && config.all.config ? config.all.config.date_format : "dd/MM/yyyy") + ")")
+	.alias("a")
+	.action((task, timeSpent, date) => {
+		timetracking.add(task, timeSpent, date);
 	});
 
 program

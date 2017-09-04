@@ -52,17 +52,33 @@ export class Timetracking {
 			console.log("There are no tasks added yet.");
 			return;
 		}
-		let idx = _.findIndex(this.tasks, ["name", taskName]);
-		if (idx === -1) {
-			console.log("Task %s not found.", taskName);
-			return;
+		if (!taskName) {
+			this.tasks.forEach((t, idx = 0) => {
+				if (t.status === TaskStatus.IN_PROGRESS) {
+					let task = this.getTask(t.name);
+					if (task.stop(status)) {
+						this.tasks[idx] = task;
+					}
+				}
+				idx++;
+			});
+		} else {
+			let idx = _.findIndex(this.tasks, ["name", taskName]);
+			if (idx === -1) {
+				console.log("Task %s not found.", taskName);
+				return;
+			}
+			let task = this.getTask(taskName);
+			if (task.stop(status)) {
+				this.tasks[idx] = task;
+			}
 		}
-		let task = this.getTask(taskName);
-		if (task.stop(status)) {
-			this.tasks[idx] = task;
-			if (this.updateTasks()) {
-				let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
+		if (this.updateTasks()) {
+			let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
+			if (taskName) {
 				console.log("Task %s has been %s.", taskName, msg);
+			} else {
+				console.log("All tasks in progress have been %s.", msg);
 			}
 		}
 	}
@@ -116,8 +132,61 @@ export class Timetracking {
 		}
 	}
 
+	public add(taskName: string, timeSpent: string, date: string) {
+		let dateFormat = this.config && this.config.date_format ? this.config.date_format.toUpperCase() + " h:mm" : "DD/MM/YYYY h:mm";
+		if (date === undefined) {
+			date = moment().format(dateFormat);
+		} else {
+			if (!moment(date, dateFormat).isValid()) {
+				console.log("Date it is not in a valid format.");
+				return;
+			}
+		}
+		if (!this.timeIsValid(timeSpent)) {
+			console.log("Time spent it is not in a valid format.");
+			return;
+		}
+		let isFullHour = timeSpent.indexOf(":") > 0;
+		let hour: number;
+		let min: number;
+		if (isFullHour) {
+			let split = timeSpent.split(":");
+			hour = +split[0];
+			min = +split[1];
+		} else {
+			let valueOfSubstr: number = +timeSpent.substring(0, timeSpent.length - 1);
+			hour = timeSpent.indexOf("h") > -1 ? valueOfSubstr : 0;
+			min = timeSpent.indexOf("m") > -1 ? valueOfSubstr : 0;
+		}
+		let idx = _.findIndex(this.tasks, ["name", taskName]);
+		let task = this.getTaskByIndex(taskName, idx);
+		if (!task.add(date, dateFormat, hour, min)) {
+			return;
+		}
+		if (idx === -1) {
+			task.setStatus(TaskStatus.FINISHED);
+			this.tasks.push(task);
+		} else {
+			this.tasks[idx] = task;
+		}
+		if (this.updateTasks()) {
+			if (idx === -1) {
+				console.log("Task %s added.", task.name);
+			} else {
+				console.log("The entered time was added in the task %s.", task.name);
+			}
+		}
+	}
+
 	private getTask(key: string): Task {
 		return new Task(key, _.find(this.tasks, ["name", key]));
+	}
+
+	private getTaskByIndex(key: string, idx: number) {
+		if (idx === -1) {
+			return new Task(key, undefined);
+		}
+		return new Task(key, this.tasks[idx]);
 	}
 
 	private updateTasks(): boolean {
@@ -128,5 +197,26 @@ export class Timetracking {
 			console.log("An error occurred.");
 			return false;
 		}
+	}
+
+	private timeIsValid(time: string): boolean {
+		if (!time || time.length > 5) {
+			return false;
+		}
+		let regList = ["([0-24]{1,2})\:+([0-59]{2})", "([0-59]{1,2}\m)", "([0-24]{1,2}\h)"];
+		let i = 0;
+		for (i; i < regList.length; i++) {
+			if (new RegExp(regList[i]).test(time)) {
+				break;
+			}
+		}
+		if (i >= regList.length) {
+			return false;
+		}
+		let value = new RegExp(regList[i]).exec(time);
+		if (value == null || value[0] !== time) {
+			return false;
+		}
+		return true;
 	}
 }

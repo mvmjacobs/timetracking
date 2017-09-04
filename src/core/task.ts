@@ -53,4 +53,15 @@ export class Task {
 		this.setStatus(status);
 		return true;
 	}
+
+	public add(date: string, dateFormat: string, hour: number, min: number): boolean {
+		let stop = moment(date, dateFormat);
+		stop.add(hour, "h");
+		stop.add(min, "m");
+		this.log.unshift({
+			start: moment(date, dateFormat).format(),
+			stop: stop.format()
+		});
+		return true;
+	}
 }
