@@ -88,7 +88,7 @@ export class Timetracking {
 			console.log("There are no tasks added yet.");
 			return;
 		}
-		let dateFormat = this.config && this.config.date_format ? this.config.date_format.toUpperCase() : "DD/MM/YYYY";
+		let dateFormat = this.config && this.config.date_format ? this.config.date_format.toUpperCase() : "MM/DD/YYYY";
 		if (date === undefined) {
 			date = moment().format(dateFormat);
 		} else {

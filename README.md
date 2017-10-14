@@ -79,7 +79,7 @@ The result will be a list of your tasks and the time (`HH:mm`) each took, like t
 
 [![tm list](http://i.imgur.com/c5TUhUX.png)](https://github.com/mvmjacobs/timetracking#list)
 
-> **Note 1**: By default [date] must be in the format configured `dd/MM/yyyy`. This format can be changed by the configuration file, see [Installation](https://github.com/mvmjacobs/timetracking#installation) section.
+> **Note 1**: By default [date] must be in the format configured `MM/dd/yyyy`. This format can be changed by the configuration file, see [Installation](https://github.com/mvmjacobs/timetracking#installation) section.
 >
 > **Note 2**: If the [date] is not given the summary will be the current date.
 
@@ -93,7 +93,7 @@ $ tm a <task> <time_spent> [date]
 
 The **<time_spent>** parameter must be like this: `1h` | `15m` | `H:mm` | `HH:mm`.
 
-By default **[date]** paremeter must be in the format `dd/MM/yyyy` and you can pass the start time as `h:mm`. If the **[date]** is not given the summary will be the current date/time. The date format can be configured by the configuration file, see [Installation](https://github.com/mvmjacobs/timetracking#installation) section.
+By default **[date]** paremeter must be in the format `MM/dd/yyyy` and you can pass the start time as `h:mm`. If the **[date]** is not given the summary will be the current date/time. The date format can be configured by the configuration file, see [Installation](https://github.com/mvmjacobs/timetracking#installation) section.
 
 ---
 
