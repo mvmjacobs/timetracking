@@ -23,7 +23,7 @@ Run `--help` or `-h` to see all commands.
 Usage: timetracking|tm [options] [command]
 
   Commands:
-    start|s <task> [description]          Start task with a description.
+    start|s <task>				          Start a task.
     pause|p [task]                        Pause a task. If you do not inform the [task] all tasks in progress will be paused.
     finish|f [task]                       Finish a task. If you do not inform the [task] all tasks in progress will be completed.
     list|l [date]                         Resume time of the taks. You can pass the date on format configured.
@@ -39,32 +39,40 @@ Usage: timetracking|tm [options] [command]
 You can start a task running the following command:
 
 ```
-$ timetracking start <task name> [task description]
+$ timetracking start <task>
 or
-$ tm s <task name> [task description]
+$ tm s <task>
 ```
+
+You can also enter a description for the task adding the option `-d`:
+```
+$ timetracking start <task> -d <task_description>
+or
+$ tm s <task> -d <task_description>
+```
+
 By default, when you start a task, all other tasks in progress are paused. Add the option `-n` to not pause the others tasks:
 ```
-$ timetracking start <task name> [task description] -n
+$ timetracking start <task> -n
 or
-$ tm s <task name> [task description] -n
+$ tm s <task> -n
 ```
 
 ### Pause
 You can pause a task running the following command:
 ```
-$ timetracking pause [task name]
+$ timetracking pause [task]
 or
-$ tm p [task name]
+$ tm p [task]
 ```
 If you do not inform the **[task]** all tasks in progress will be paused.
 
 ### Finish
 You can finish a task running the following command:
 ```
-$ timetracking finish [task name]
+$ timetracking finish [task]
 or
-$ tm f [task name]
+$ tm f [task]
 ```
 If you do not inform the **[task]** all tasks in progress will be completed.
 
