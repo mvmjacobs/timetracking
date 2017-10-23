@@ -67,6 +67,15 @@ $ tm p [task]
 ```
 If you do not inform the **[task]** all tasks in progress will be paused.
 
+You can also enter a date/hour to pause the task adding the option `-t`:
+```
+$ timetracking pause <task> -t <timestamp>
+or
+$ tm p <task> -t <timestamp>
+```
+When you use this option, the `<task>` parameter becomes obrigatory.
+The **date** is optional, you can only enter the time in the following format: `H:mm`.
+
 ### Finish
 You can finish a task running the following command:
 ```

@@ -52,8 +52,17 @@ program
 	.command("pause [task]")
 	.description("Pause a task. If you do not inform the [task] all tasks in progress will be paused.")
 	.alias("p")
-	.action((task) => {
-		timetracking.stop(task, TaskStatus.PAUSED);
+	.option("-t <timestamp>", "Set date|hour of pause.")
+	.action((task, options) => {
+		let date = "";
+		if (options.T && typeof options.T !== "function") {
+			if (!task) {
+				console.log("To use this option you must enter a task.");
+				return;
+			}
+			date = options.T;
+		}
+		timetracking.stop(task, TaskStatus.FINISHED, date);
 	});
 
 program
