@@ -40,7 +40,7 @@ export class Task {
 		return true;
 	}
 
-	public stop(status: TaskStatus): boolean {
+	public stop(status: TaskStatus, timestamp?: moment.Moment): boolean {
 		let lastTime = _.last(this.log);
 		if (this.status === status) {
 			let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
@@ -48,7 +48,7 @@ export class Task {
 			return false;
 		}
 		if (lastTime && !lastTime.stop) {
-			this.log[this.log.length - 1].stop = moment().format();
+			this.log[this.log.length - 1].stop = (timestamp || moment()).format();
 		}
 		this.setStatus(status);
 		return true;

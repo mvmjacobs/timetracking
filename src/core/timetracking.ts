@@ -47,7 +47,7 @@ export class Timetracking {
 		}
 	}
 
-	public stop(taskName: string, status: TaskStatus): void {
+	public stop(taskName: string, status: TaskStatus, timestamp?: string): void {
 		if (!this.tasks || this.tasks.length === 0) {
 			console.log("There are no tasks added yet.");
 			return;
@@ -69,7 +69,30 @@ export class Timetracking {
 				return;
 			}
 			let task = this.getTask(taskName);
-			if (task.stop(status)) {
+			let dateFormat = this.getConfigDateFormat();
+			let fullDate = moment();
+			timestamp = timestamp || fullDate.format(dateFormat);
+			let isFullDate = timestamp.includes("/");
+			if (isFullDate) {
+				if (!moment(timestamp, dateFormat).isValid()) {
+					console.log("Time it is not in a valid format.");
+					return;
+				}
+				fullDate = moment(timestamp, dateFormat);
+			} else {
+				if (!this.timeIsValid(timestamp, ["([0-9]{1,3})\:+([0-5]{1}[0-9]{1})"])) {
+					console.log("Time it is not in a valid format.");
+					return;
+				}
+				fullDate.hour(+timestamp.split(":")[0]);
+				fullDate.minute(+timestamp.split(":")[1]);
+			}
+			let lastTime = _.last(task.log);
+			if (moment(lastTime.start) > fullDate) {
+				console.log("The time entered must be greater than the start time of the task.");
+				return;
+			}
+			if (task.stop(status, fullDate)) {
 				this.tasks[idx] = task;
 			}
 		}
@@ -133,7 +156,7 @@ export class Timetracking {
 	}
 
 	public add(taskName: string, timeSpent: string, date: string) {
-		let dateFormat = this.config && this.config.date_format ? this.config.date_format.toUpperCase() + " h:mm" : "DD/MM/YYYY h:mm";
+		let dateFormat = this.config && this.config.date_format ? this.config.date_format.toUpperCase() + " h:mm" : "MM/DD/YYYY h:mm";
 		if (date === undefined) {
 			date = moment().format(dateFormat);
 		} else {
@@ -199,11 +222,11 @@ export class Timetracking {
 		}
 	}
 
-	private timeIsValid(time: string): boolean {
+	private timeIsValid(time: string, regList?: string[]): boolean {
 		if (!time || time.length > 5) {
 			return false;
 		}
-		let regList = ["([0-9]{1,3})\:+([0-5]{1}[0-9]{1})", "([0-9]{1,3}\m)", "([0-9]{1,3}\h)"];
+		regList = regList || ["([0-9]{1,3})\:+([0-5]{1}[0-9]{1})", "([0-9]{1,3}\m)", "([0-9]{1,3}\h)"];
 		let i = 0;
 		let value: any;
 		for (i; i < regList.length; i++) {
@@ -229,5 +252,9 @@ export class Timetracking {
 			default:
 				return "";
 		}
+	}
+
+	private getConfigDateFormat(): string {
+		return this.config && this.config.date_format ? this.config.date_format.toUpperCase() + " h:mm" : "MM/DD/YYYY h:mm";
 	}
 }

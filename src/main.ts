@@ -35,8 +35,17 @@ program
 	.command("finish [task]")
 	.description("Finish a task. If you do not inform the [task] all tasks in progress will be completed.")
 	.alias("f")
-	.action((task) => {
-		timetracking.stop(task, TaskStatus.FINISHED);
+	.option("-t <timestamp>", "Set date|hour of finish.")
+	.action((task, options) => {
+		let date = "";
+		if (options.T && typeof options.T !== "function") {
+			if (!task) {
+				console.log("To use this option you must enter a task.");
+				return;
+			}
+			date = options.T;
+		}
+		timetracking.stop(task, TaskStatus.FINISHED, date);
 	});
 
 program

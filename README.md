@@ -76,6 +76,15 @@ $ tm f [task]
 ```
 If you do not inform the **[task]** all tasks in progress will be completed.
 
+You can also enter a date/hour to finish the task adding the option `-t`:
+```
+$ timetracking finish <task> -t <timestamp>
+or
+$ tm f <task> -t <timestamp>
+```
+When you use this option, the `<task>` parameter becomes obrigatory.
+The **date** is optional, you can only enter the time in the following format: `H:mm`.
+
 ### List
 You can get a resume of your tasks in a date running the following command:
 ```
