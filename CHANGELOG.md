@@ -1,3 +1,14 @@
+<a name="1.2.0"></a>
+## [v1.2.0](https://github.com/mvmjacobs/timetracking/releases/tag/v1.2.0) | 2017-10-23
+
+### Improvements
+* **config**: Default date format in config file was changed to `MM/dd/yyyy`. ([#19](https://github.com/mvmjacobs/timetracking/issues/19)) ([96d9474](https://github.com/mvmjacobs/timetracking/commit/96d9474))
+* **start**: Now the task description is informed from an option. [See here](https://github.com/mvmjacobs/timetracking#start) to know how to use it. ([#16](https://github.com/mvmjacobs/timetracking/issues/16)) ([f7cbc67](https://github.com/mvmjacobs/timetracking/commit/f7cbc67))
+* **finish|pause**: Now you can stop a task with date and time. [See here](https://github.com/mvmjacobs/timetracking#pause) to know how. ([#18](https://github.com/mvmjacobs/timetracking/issues/18)) ([81f4c69](https://github.com/mvmjacobs/timetracking/commit/81f4c69), [40ced82](https://github.com/mvmjacobs/timetracking/commit/40ced82))
+
+### Bug Fixes
+* **finish|pause**: Fix console message when the task has already been stopped. ([#20](https://github.com/mvmjacobs/timetracking/issues/20)) ([d2fb57c](https://github.com/mvmjacobs/timetracking/commit/d2fb57c))
+
 <a name="1.1.1"></a>
 ## [v1.1.1](https://github.com/mvmjacobs/timetracking/releases/tag/v1.1.1) | 2017-09-04
 
