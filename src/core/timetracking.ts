@@ -94,6 +94,9 @@ export class Timetracking {
 			}
 			if (task.stop(status, fullDate)) {
 				this.tasks[idx] = task;
+			} else {
+				// If the task could not be stopped, quit the command
+				return;
 			}
 		}
 		if (this.updateTasks()) {
