@@ -78,7 +78,6 @@ export class Timetracking {
 					console.log("Time it is not in a valid format.");
 					return;
 				}
-				fullDate = moment(timestamp, dateFormat);
 			} else {
 				if (!this.timeIsValid(timestamp, ["([0-9]{1,3})\:+([0-5]{1}[0-9]{1})"])) {
 					console.log("Time it is not in a valid format.");
