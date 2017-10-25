@@ -1,6 +1,6 @@
 {
   "name": "timetracking",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple command line app to track your time.",
   "keywords": [
     "timetracking",
@@ -26,7 +26,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack-build": "tsc && npm pack && move ./*.tgz ./build/",
-    "install-build-dev": "npm run pack-build && npm install ./build/timetracking-1.2.0.tgz -g"
+    "install-build-dev": "npm run pack-build && npm install ./build/timetracking-1.2.1.tgz -g"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.74",
