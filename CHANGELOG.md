@@ -1,3 +1,9 @@
+<a name="1.2.1"></a>
+## [v1.2.1](https://github.com/mvmjacobs/timetracking/releases/tag/v1.2.1) | 2017-10-24
+
+### Bug Fixes
+* **finish|pause**: Fixed commands when the `-t` option is not enter. ([#21](https://github.com/mvmjacobs/timetracking/issues/21)) ([beefa0d](https://github.com/mvmjacobs/timetracking/commit/beefa0d))
+
 <a name="1.2.0"></a>
 ## [v1.2.0](https://github.com/mvmjacobs/timetracking/releases/tag/v1.2.0) | 2017-10-23
 
