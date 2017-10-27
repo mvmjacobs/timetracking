@@ -11,7 +11,6 @@ A simple command line app to track your time. It was inspired by [Timet](https:/
 
 
 ## Installation
-
 ```
 $ npm install timetracking -g
 ```
