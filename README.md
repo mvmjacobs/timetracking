@@ -2,7 +2,7 @@
 [![npm version](https://img.shields.io/npm/v/timetracking.svg)](https://www.npmjs.com/package/timetracking)
 [![license](https://img.shields.io/github/license/mvmjacobs/timetracking.svg)](https://github.com/mvmjacobs/timetracking/blob/master/LICENSE.md)
 [![npm downloads](https://img.shields.io/npm/dm/timetracking.svg)](https://www.npmjs.com/package/timetracking)
-[![unit test coverage](https://img.shields.io/badge/unit%20test%20coverage-0%25-brightgreen.svg)](https://github.com/mvmjacobs/timetracking)
+[![unit test coverage](https://img.shields.io/badge/unit%20test%20coverage-0%25-red.svg)](https://github.com/mvmjacobs/timetracking)
 
 A simple command line app to track your time. It was inspired by [Timet](https://github.com/fabiorogeriosj/timet) and [Time tracker](https://github.com/danibram/time-tracker-cli).
 
