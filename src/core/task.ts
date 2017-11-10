@@ -1,9 +1,9 @@
 // import 3th party packages
-import * as _ from "lodash/array";
-import * as moment from "moment";
+import * as _ from 'lodash/array';
+import * as moment from 'moment';
 
 // import models
-import { TaskStatus } from "./task-status";
+import { TaskStatus } from './task-status';
 
 export class Task {
 	public name: string;
@@ -13,13 +13,13 @@ export class Task {
 
 	constructor(name: string, values: any) {
 		this.name = name;
-		this.description = values ? values.description : "";
+		this.description = values ? values.description : '';
 		this.status = values ? values.status : TaskStatus.IN_PROGRESS;
 		this.log = values ? values.log : [];
 	}
 
 	public setDescription(description: string): void {
-		this.description = description ? description : this.description ? this.description : "";
+		this.description = description ? description : this.description ? this.description : '';
 	}
 
 	public setStatus(status: TaskStatus): void {
@@ -29,7 +29,7 @@ export class Task {
 	public start(description: string): boolean {
 		let lastTime = _.last(this.log);
 		if (lastTime && lastTime.start && !lastTime.stop) {
-			console.log("This task already has been started.");
+			console.log('This task already has been started.');
 			return false;
 		}
 		this.log.push({
@@ -43,8 +43,8 @@ export class Task {
 	public stop(status: TaskStatus, timestamp?: moment.Moment): boolean {
 		let lastTime = _.last(this.log);
 		if (this.status === status) {
-			let msg = status === TaskStatus.FINISHED ? "completed" : "paused";
-			console.log("This task already has been %s.", msg);
+			let msg = status === TaskStatus.FINISHED ? 'completed' : 'paused';
+			console.log('This task already has been %s.', msg);
 			return false;
 		}
 		if (lastTime && !lastTime.stop) {
@@ -56,8 +56,8 @@ export class Task {
 
 	public add(date: string, dateFormat: string, hour: number, min: number): boolean {
 		let stop = moment(date, dateFormat);
-		stop.add(hour, "h");
-		stop.add(min, "m");
+		stop.add(hour, 'h');
+		stop.add(min, 'm');
 		this.log.unshift({
 			start: moment(date, dateFormat).format(),
 			stop: stop.format()
