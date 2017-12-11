@@ -62,7 +62,7 @@ program
 			}
 			date = options.T;
 		}
-		timetracking.stop(task, TaskStatus.FINISHED, date);
+		timetracking.stop(task, TaskStatus.PAUSED, date);
 	});
 
 program
