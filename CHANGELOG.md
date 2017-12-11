@@ -1,3 +1,9 @@
+<a name="1.2.2"></a>
+## [v1.2.2](https://github.com/mvmjacobs/timetracking/releases/tag/v1.2.2) | 2017-12-11
+
+### Bug Fixes
+* **pause**: Fixed the command that was finishing the task instead of pausing. ([#23](https://github.com/mvmjacobs/timetracking/issues/23)) ([074242e](https://github.com/mvmjacobs/timetracking/commit/074242e))
+
 <a name="1.2.1"></a>
 ## [v1.2.1](https://github.com/mvmjacobs/timetracking/releases/tag/v1.2.1) | 2017-10-24
 
