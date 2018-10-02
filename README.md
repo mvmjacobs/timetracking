@@ -3,6 +3,8 @@
 [![license](https://img.shields.io/github/license/mvmjacobs/timetracking.svg)](https://github.com/mvmjacobs/timetracking/blob/master/LICENSE.md)
 [![npm downloads](https://img.shields.io/npm/dm/timetracking.svg)](https://www.npmjs.com/package/timetracking)
 
+**This project is not maintained anymore :(**
+
 A simple command line app to track your time. It was inspired by [Timet](https://github.com/fabiorogeriosj/timet) and [Time tracker](https://github.com/danibram/time-tracker-cli).
 
 
