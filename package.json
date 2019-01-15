@@ -24,12 +24,13 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "pack-build": "tsc && npm pack && move ./*.tgz ./build/",
     "install-build-dev": "npm run pack-build && npm install ./build/timetracking-1.2.2.tgz -g"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.88",
+    "mocha": "^5.2.0",
     "typescript": "^2.6.2"
   },
   "dependencies": {
