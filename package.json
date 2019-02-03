@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "mocha",
+    "test": "tsc && mocha",
     "pack-build": "tsc && npm pack && move ./*.tgz ./build/",
     "install-build-dev": "npm run pack-build && npm install ./build/timetracking-1.2.2.tgz -g"
   },
