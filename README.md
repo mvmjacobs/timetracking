@@ -1,7 +1,7 @@
 # Timetracking :hourglass:
 [![npm version](https://img.shields.io/npm/v/timetracking.svg)](https://www.npmjs.com/package/timetracking)
 [![license](https://img.shields.io/github/license/mvmjacobs/timetracking.svg)](https://github.com/mvmjacobs/timetracking/blob/master/LICENSE.md)
-[![npm downloads](https://img.shields.io/npm/dm/timetracking.svg)](https://www.npmjs.com/package/timetracking)
+[![npm downloads](https://img.shields.io/npm/dt/timetracking.svg)](https://www.npmjs.com/package/timetracking)
 
 **This project is not maintained anymore :(**
 
