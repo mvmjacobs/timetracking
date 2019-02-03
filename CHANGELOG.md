@@ -1,3 +1,9 @@
+<a name="1.3.0"></a>
+## [v1.3.0](https://github.com/mvmjacobs/timetracking/releases/tag/v1.3.0) | 2019-02-03
+
+### Improvements
+* **test**: Add initial unit test coverage. ([#22](https://github.com/mvmjacobs/timetracking/issues/22)) ([58255fb1](https://github.com/mvmjacobs/timetracking/commit/58255fb1))
+
 <a name="1.2.2"></a>
 ## [v1.2.2](https://github.com/mvmjacobs/timetracking/releases/tag/v1.2.2) | 2017-12-11
 
